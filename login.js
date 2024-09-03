@@ -1,35 +1,19 @@
-console.log('login');
 const { ipcRenderer } = require('electron');
 
-window.onload = function() {
-  const email = document.getElementById("email");
-  const password = document.getElementById("password");
-  const btnlogin = document.getElementById("login");
-  const btnCloseSesion = document.getElementById('btnCloseSesion'); // Botón de cerrar sesión
+document.getElementById('loginForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('pass').value;
 
-  // Manejo del clic en el botón de inicio de sesión
-  btnlogin.onclick = function() {
-    console.log('Login button clicked');
-    const obj = { email: email.value, password: password.value };
-    ipcRenderer.invoke('login', obj)
-      .then(result => {
-        console.log('Login result:', result);
-        if (result === 'Login exitoso') {
-          console.log('Login exitoso');
+    ipcRenderer.send('login', { username, password });
+
+    ipcRenderer.on('login-reply', (event, result) => {
+        if (result.success) {
+            alert('Login successful!');
+            // Redirigir a la página principal o realizar otra acción
+            mainWindow.loadFile('index.html');  
         } else {
-          console.log('Login fallido');
+            alert('Login failed: ' + result.message);
         }
-      })
-      .catch(error => {
-        console.error('Login error:', error);
-      });
-  };
-
-  // Manejo del clic en el botón de cerrar sesión
-  if (btnCloseSesion) {
-    btnCloseSesion.onclick = function() {
-      console.log('Cerrar sesión button clicked');
-      ipcRenderer.send('close-session');
-    };
-  }
-};
+    });
+});
