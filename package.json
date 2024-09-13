@@ -11,10 +11,11 @@
   "author": "Esteban Vargas",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^32.0.1"
+    "electron": "^32.1.0"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
     "mysql": "^2.18.1",
     "tedious": "^18.6.1"
   }

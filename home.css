@@ -1,0 +1,68 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+}
+
+#wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* Asegura que el wrapper ocupe toda la altura */
+    min-height: 100vh;
+    transition: margin 0.3s ease; /* Transición suave para el toggle */
+}
+
+#sidebar-wrapper {
+    width: 250px;
+    background: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    height: 100%;
+    padding: 10px;
+    overflow-y: auto;
+    transition: transform 0.3s ease; /* Transición suave para el toggle */
+    transform: translateX(-250px); /* Oculta el sidebar por defecto */
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    transform: translateX(0); /* Muestra el sidebar cuando está toggled */
+}
+
+#page-content-wrapper {
+    flex: 1;
+    margin-left: 0; /* Ajuste inicial del margen */
+    padding: 20px;
+    overflow-y: auto;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    margin-left: 250px; /* Ajusta el margen cuando el sidebar está toggled */
+}
+
+@media (max-width: 180px) {
+    #sidebar-wrapper {
+        width: 100%;
+        transform: translateX(0); /* Muestra el sidebar en pantallas pequeñas */
+        position: relative;
+    }
+
+    #page-content-wrapper {
+        margin-left: 0;
+    }
+}
+
+.btn-toggle {
+    margin-right: auto;
+    padding: 3px;
+    margin: 5px;
+}
+.logout-btn {
+    position: absolute;
+    bottom: 20px; /* Ajusta el valor según sea necesario */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Para que el botón sea un poco más ancho */
+}

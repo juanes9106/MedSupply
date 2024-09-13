@@ -2,60 +2,96 @@
 <html>
 
 <head>
-   <meta charset="UTF-8">
-   <title>app fasi</title>
-   <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-   <link rel="stylesheet" href="./bootstrap.min.css">
-   <!--  <link rel="stylesheet" href="./style.css"> -->
-
+    <meta charset="UTF-8">
+    <title>app fasi</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./home.css">
+    <link rel="stylesheet" href="./icofont.min.css">
 </head>
 
 <body>
-   <div class="constainer p-4">
-      <div class="row ">
-
-         <div class="col-md-4">
-            <div class="card p-2">
-               <input type="text" id="idproduct" hidden>
-               <div class="form-group">
-                  <input class="form-control" type="text" id="name" placeholder="Name">
-               </div>
-               <div class="form-group">
-                  <input class="form-control" type="number" id="price" step="50" min="0" placeholder="Price">
-               </div>
-
-               <div>
-                  <button id="btnform" class="btn btn-primary">
-                     Add
-                  </button>
-
-                  <button id="btnUpdate" class="btn btn-success">
-                     Update
-                  </button>
-               </div>
-
-
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action bg-light">Seguimiento Estudiantes</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Students</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Interventions</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Reports</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Settings</a>
             </div>
-         </div>
+    
+            <!-- Botón de Cerrar sesión -->
+            <button class="btn btn-primary logout-btn" id="logout-btn">Cerrar sesión</button>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-         <div class="col-md-6">
-            <table class="table table-hover table-dark">
-               <thead>
-                  <tr>
-                     <th scope="col">Name</th>
-                     <th scope="col">Price</th>
-                  </tr>
-               </thead>
-               <tbody id="mylist">
-                  <!-- info -->
-               </tbody>
-            </table>
-         </div>
-         <div>
-            <button id="btnCloseSesion" class="btn btn-info"> Cerrar sesión</button>
-         </div>
-      </div>
-   </div>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="btn btn-primary btn-toggle" id="menu-toggle">
+                    <img src="./assets/images/Menu.png" alt="" width="35px">
+                </button>
+                
+            </nav>
+            <div class="container-fluid">
+                <h1 class="mt-4">Dashboard</h1>
+                <p>Here you can manage students, track their progress, and oversee interventions.</p>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Student Name</th>
+                            <th>Grade</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Juan Pérez</td>
+                            <td>10th</td>
+                            <td>In Intervention</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Maria Gómez</td>
+                            <td>11th</td>
+                            <td>Under Review</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Carlos Rodríguez</td>
+                            <td>9th</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>Ana Fernández</td>
+                            <td>12th</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>José Martínez</td>
+                            <td>10th</td>
+                            <td>Under Review</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Optional: Your Custom JS -->
+    <script>
+        document.getElementById("menu-toggle").addEventListener("click", function () {
+            document.getElementById("wrapper").classList.toggle("toggled");
+        });
+    </script>
 </body>
 
 </html>
